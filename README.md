@@ -8,7 +8,7 @@ Este projeto implementa um chatbot utilizando **BotMan** integrado a uma aplica�
 - **BotMan** - Biblioteca para criação de chatbots em PHP.
 - **Bootstrap 5.3.3** - Framework CSS para estilização do frontend.
 - **JavaScript** - Utilizado para integração do chatbot na interface web.
-- **SQLite** (ou outro banco de dados suportado pelo Laravel) - Armazenamento dos feedbacks coletados.
+- **MYSQL** (ou outro banco de dados suportado pelo Laravel) - Armazenamento dos feedbacks coletados.
 
 ## 📥 Instalação e Configuração
 
