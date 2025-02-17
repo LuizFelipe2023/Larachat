@@ -46,7 +46,7 @@
         <div class="content" style="margin-left: 250px; padding: 20px; flex-grow: 1; padding-top: 80px;">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm"
                 style="z-index: 1050; width: calc(100% - 250px); margin-left: 250px;">
-                <div class="container-fluid">
+                <div class="container-md">
                     <span class="navbar-text text-white">@yield('title')</span>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
