@@ -18,31 +18,34 @@
         </ul>
         <hr class="border-white mx-3">
     </div>
-</div>
-<div class="content" style="margin-left: 250px; padding: 20px; flex-grow: 1; padding-top: 80px;">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm" style="z-index: 1050; width: calc(100% - 250px); margin-left: 250px;">
-        <div class="container-fluid">
-        <span class="navbar-text text-white">@yield('title')</span> 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            {{ Auth::user()->name }}
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
-                            <li><a class="dropdown-item" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log
-                                    Out</a></li>
-                        </ul>
-                    </li>
-                </ul>
+    <div class="content" style="margin-left: 250px; padding: 20px; flex-grow: 1; padding-top: 80px;">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm" style="z-index: 1050; width: calc(100% - 250px); margin-left: 250px;">
+            <div class="container-fluid">
+                <span class="navbar-text text-white">@yield('title')</span>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+                                {{ Auth::user()->name }}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{{ route('profile.edit') }}">Profile</a></li>
+                                <li><a class="dropdown-item" href="{{ route('logout') }}"
+                                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Log
+                                        Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
             </div>
+        </nav>
+        <div class="container">
+            @yield('content')
         </div>
-    </nav>
+    </div>
 </div>
