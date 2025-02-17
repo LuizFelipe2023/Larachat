@@ -5,6 +5,7 @@
 <script defer src="{{ asset('js/feedbackTable.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<script defer src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 @section('content')
     <div class="container">
         <div class="row justify-content-center align-items-center">
@@ -48,7 +49,7 @@
                                             <td class="text-center">
                                                 <span class="badge bg-success">{{ $feedback->nivel_satisfacao }}</span>
                                             </td>
-                                            <td class="text-center">{{ $feedback->descricao }}</td>
+                                            <td class="text-center">{!!$feedback->descricao !!}</td>
                                             <td class="text-center">
                                                 <div class="dropdown">
                                                     <button class="btn btn-secondary dropdown-toggle" type="button"
@@ -96,8 +97,9 @@
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="descricao" class="form-label">Descrição</label>
-                                                                <textarea class="form-control" id="descricao" name="descricao"
-                                                                    rows="3">{{ $feedback->descricao }}</textarea>
+                                                                <textarea class="form-control" id="descricao{{ $feedback->id }}"
+                                                                    name="descricao" rows="3"
+                                                                    value="{{ old('descricao', $feedback->descricao) }}">{{ $feedback->descricao }}</textarea>
                                                             </div>
                                                             <div class="mb-3">
                                                                 <label for="nivel_satisfacao" class="form-label">Nível de
@@ -123,6 +125,34 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <script defer>
+                                            document.addEventListener("DOMContentLoaded", function () {
+                                                let ckeditorConfig = {
+                                                    extraPlugins: 'wordcount',
+                                                    wordcount: {
+                                                        showCharCount: true,
+                                                        maxCharCount: 10000,
+                                                        charCountMsg: 'Caracteres restantes: {0}',
+                                                        maxCharCountMsg: 'Você atingiu o limite máximo de caracteres permitidos.'
+                                                    }
+                                                };
+
+                                               
+                                                $('#editModal{{ $feedback->id }}').on('shown.bs.modal', function () {
+                                                    var descricaoField = document.getElementById('descricao{{ $feedback->id }}');
+                                                    if (descricaoField && !CKEDITOR.instances['descricao{{ $feedback->id }}']) {
+                                                        CKEDITOR.replace('descricao{{ $feedback->id }}', ckeditorConfig);
+                                                    }
+                                                });
+
+                                               
+                                                $('#editModal{{ $feedback->id }}').on('hidden.bs.modal', function () {
+                                                    if (CKEDITOR.instances['descricao{{ $feedback->id }}']) {
+                                                        CKEDITOR.instances['descricao{{ $feedback->id }}'].destroy();
+                                                    }
+                                                });
+                                            });
+                                        </script>
                                         <div class="modal fade" id="deleteModal{{ $feedback->id }}" tabindex="-1"
                                             aria-labelledby="deleteModalLabel{{ $feedback->id }}" aria-hidden="true">
                                             <div class="modal-dialog">

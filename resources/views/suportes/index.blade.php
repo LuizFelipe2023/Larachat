@@ -2,7 +2,6 @@
 @section('title', 'Mensagens do Suporte')
 <script defer src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 <script defer src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
-<script defer src="{{ asset('js/feedbackTable.js') }}"></script>
 <script defer src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
 <script defer src="{{ asset('js/suporteTable.js') }}"></script>
@@ -162,7 +161,7 @@
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary"
                                                             data-bs-dismiss="modal">Cancelar</button>
-                                                        <form action="{{ route('suportes.destroy', $suporte->id) }}"
+                                                        <form action="{{ route('suportes.delete', $suporte->id) }}"
                                                             method="POST">
                                                             @csrf
                                                             @method('DELETE')
