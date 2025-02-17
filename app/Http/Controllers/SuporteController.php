@@ -45,7 +45,7 @@ class SuporteController extends Controller
 
             Log::info('Suporte criado com sucesso'); // Log de informação
 
-            return redirect()->route('suportes.index')->with('success', 'Mensagem enviada com sucesso para o suporte');
+            return redirect()->route('home')->with('success', 'Mensagem enviada com sucesso para o suporte');
         } catch (Exception $e) {
             Log::error('Erro ao criar suporte: ' . $e->getMessage()); // Log de erro com a mensagem de erro
 

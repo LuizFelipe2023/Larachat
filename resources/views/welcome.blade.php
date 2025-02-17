@@ -105,16 +105,37 @@
 <body class="d-flex justify-content-center align-items-center vh-100">
 
     <div class="chat-container">
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if (session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
         <h1 class="mb-3">Bem-vindo ao Chat</h1>
         <p>Digite <strong>"feedback"</strong> para iniciar a conversa.</p>
 
         <button class="btn btn-custom btn-chat mt-3" onclick="openChat()">Iniciar Chat</button>
 
-        <a href="/login" class="btn btn-custom btn-login">Acessar Dashboard</a>
+        <a href="{{ route('login') }}" class="btn btn-custom btn-login">Acessar Dashboard</a>
 
         <p class="footer-text">Precisa de ajuda? Envie uma mensagem para o nosso suporte!</p>
 
-        <a href="/suporte" class="btn btn-custom btn-support">
+        <a href="/suportes/create" class="btn btn-custom btn-support">
             <i class="fas fa-headset"></i> Enviar Mensagem
         </a>
     </div>
