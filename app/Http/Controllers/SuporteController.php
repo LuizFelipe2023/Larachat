@@ -53,17 +53,6 @@ class SuporteController extends Controller
         }
     }
 
-    public function editSuporte($id)
-    {
-        Log::info('Acessando o formulário de edição do suporte com ID: ' . $id); // Log de informação com ID
-
-        $suporte = $this->suporteService->getById($id);
-
-        Log::info('Suporte carregado para edição', ['suporte' => $suporte]); // Log de informação com dados do suporte
-
-        return view('suportes.editSuporte', compact('suporte'));
-    }
-
     public function updateSuporte($id, SuporteRequest $request)
     {
         try {

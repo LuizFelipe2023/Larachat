@@ -28,39 +28,6 @@ class FeedbackController extends Controller
         return view('feedbacks.index', compact('feedbacks'));
     }
  
-    public function showFeedback($id)
-    {
-        try {
-            Log::info('Tentando carregar o feedback com ID: ' . $id); 
-
-            $feedback = $this->feedbackService->getById($id);
-
-            Log::info('Feedback carregado com sucesso', ['feedback' => $feedback]); 
-
-            return view('feedbacks.show', compact('feedback'));
-        } catch (Exception $e) {
-            Log::error('Erro ao carregar o feedback com ID: ' . $id . '. Erro: ' . $e->getMessage()); 
-
-            return redirect()->route('feedbacks.index')->with('error', 'Feedback não encontrado.');
-        }
-    }
-
-    public function editFeedback($id)
-    {
-        try {
-            Log::info('Tentando acessar o formulário de edição do feedback com ID: ' . $id);
-
-            $feedback = $this->feedbackService->getById($id);
-
-            Log::info('Feedback carregado para edição', ['feedback' => $feedback]); 
-
-            return view('feedbacks.edit', compact('feedback'));
-        } catch (Exception $e) {
-            Log::error('Erro ao carregar o feedback para edição com ID: ' . $id . '. Erro: ' . $e->getMessage()); 
-
-            return redirect()->route('feedbacks.index')->with('error', 'Feedback não encontrado.');
-        }
-    }
 
     public function updateFeedback(FeedbackRequest $request, $id)
     {

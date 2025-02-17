@@ -10,7 +10,7 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-md-12 mt-5">
                 <div class="card rounded-3 shadow-sm border-1">
-                    <div class="card-header bg-primary text-white">
+                    <div class="card-header bg-secondary text-white">
                         <h3 class="text-center fw-bold mt-3 mb-3">Lista de Feedbacks</h3>
                     </div>
                     <div class="card-body">
@@ -31,11 +31,11 @@
                             <table class="table table-striped table-hover table-bordered mt-4 mb-4" id="feedbackTable">
                                 <thead class="bg-secondary text-white">
                                     <tr>
-                                        <th scope="col" class="text-center"><i class="bi bi-person"></i> Nome do Cliente</th>
-                                        <th scope="col" class="text-center"><i class="bi bi-card-checklist"></i> CPF do Cliente</th>
-                                        <th scope="col" class="text-center"><i class="bi bi-emoji-smile"></i> Nível de Satisfação</th>
-                                        <th scope="col" class="text-center"><i class="bi bi-chat-left-dots"></i> Descrição</th>
-                                        <th scope="col" class="text-center">Ações</th>
+                                        <th scope="col" class="text-center"><i class="fas fa-user"></i> Nome do Cliente</th>
+                                        <th scope="col" class="text-center"><i class="fas fa-id-card"></i> CPF do Cliente</th>
+                                        <th scope="col" class="text-center"><i class="fas fa-smile"></i> Nível de Satisfação</th>
+                                        <th scope="col" class="text-center"><i class="fas fa-comment"></i> Descrição</th>
+                                        <th scope="col" class="text-center"><i class="fas fa-cogs"></i>Ações</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -59,73 +59,13 @@
                                                 </div>
                                             </td>
                                         </tr>
-
-                                        <div class="modal fade" id="editModal{{ $feedback->id }}" tabindex="-1" aria-labelledby="editModalLabel{{ $feedback->id }}" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="editModalLabel{{ $feedback->id }}">Editar Feedback</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <form method="POST" action="{{ route('feedbacks.update', $feedback->id) }}">
-                                                            @csrf
-                                                            @method('PUT')
-                                                            <div class="mb-3">
-                                                                <label for="nome_cliente" class="form-label">Nome do Cliente</label>
-                                                                <input type="text" class="form-control" id="nome_cliente" name="nome_cliente" value="{{ $feedback->nome_cliente }}">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="cpf_cliente" class="form-label">CPF do Cliente</label>
-                                                                <input type="text" class="form-control" id="cpf_cliente" name="cpf_cliente" value="{{ $feedback->cpf_cliente }}">
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="nivel_satisfacao" class="form-label">Nível de Satisfação</label>
-                                                                <select class="form-select" id="nivel_satisfacao" name="nivel_satisfacao">
-                                                                    <option value="1" @if($feedback->nivel_satisfacao == 1) selected @endif>1</option>
-                                                                    <option value="2" @if($feedback->nivel_satisfacao == 2) selected @endif>2</option>
-                                                                    <option value="3" @if($feedback->nivel_satisfacao == 3) selected @endif>3</option>
-                                                                    <option value="4" @if($feedback->nivel_satisfacao == 4) selected @endif>4</option>
-                                                                    <option value="5" @if($feedback->nivel_satisfacao == 5) selected @endif>5</option>
-                                                                </select>
-                                                            </div>
-                                                            <div class="mb-3">
-                                                                <label for="descricao" class="form-label">Descrição</label>
-                                                                <textarea class="form-control" id="descricao" name="descricao">{{ $feedback->descricao }}</textarea>
-                                                            </div>
-                                                            <button type="submit" class="btn btn-primary">Salvar mudanças</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="modal fade" id="deleteModal{{ $feedback->id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ $feedback->id }}" aria-hidden="true">
-                                            <div class="modal-dialog">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h5 class="modal-title" id="deleteModalLabel{{ $feedback->id }}">Deletar Feedback</h5>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <p>Tem certeza que deseja deletar este feedback?</p>
-                                                        <form method="POST" action="{{ route('feedbacks.delete', $feedback->id) }}">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger">Deletar</button>
-                                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
                                     @endforeach
                                 </tbody>
                             </table>
                         </div>
                         <div class="d-flex justify-content-end mt-4 mb-4">
                             <button class="btn btn-primary">
-                                <i class="bi bi-download"></i> Exportar
+                                <i class="fas fa-download"></i> Exportar
                             </button>
                         </div>
                     </div>

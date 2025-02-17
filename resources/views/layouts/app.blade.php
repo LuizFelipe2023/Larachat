@@ -19,7 +19,7 @@
     @stack('styles')
 </head>
 
-<body>
+<body style="background: url('{{ asset('img/25097.jpg') }}') no-repeat center center fixed; background-size: cover;">
 <div class="d-flex">
     <div class="sidebar bg-dark" style="width: 250px; height: 100vh; position: fixed; top: 0; left: 0; padding-top: 40px; padding-bottom: 40px; z-index: 1000;">
         <a href="{{ route('dashboard') }}" class="d-flex justify-content-center align-items-center mb-4 text-white text-decoration-none">
