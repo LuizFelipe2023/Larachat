@@ -24,8 +24,9 @@
         <div class="sidebar bg-dark"
             style="width: 250px; height: 100vh; position: fixed; top: 0; left: 0; padding-top: 40px; padding-bottom: 40px; z-index: 1000;">
             <a href="{{ route('dashboard') }}"
-                class="d-flex justify-content-center align-items-center mb-4 text-white text-decoration-none">
-                <span class="fs-4 fw-bold">Dashboard</span>
+                class="d-flex justify-content-center align-items-center mb-4 text-white text-decoration-none mt-5 mb-5">
+                <i class="bi bi-house-door me-2"></i> 
+                <span class="fs-4 fw-bold">Painel Administrativo</span>
             </a>
             <hr class="border-white mx-3">
             <ul class="nav flex-column mb-auto">
