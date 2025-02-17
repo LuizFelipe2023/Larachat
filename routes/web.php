@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GraficoController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SuporteController;
@@ -52,5 +53,9 @@ Route::prefix('suportes')->name('suportes.')->group(function(){
       route::put('/{id}/update',[SuporteController::class,'updateSuporte'])->name('update');
       route::delete('/{id}/delete',[SuporteController::class,'deleteSuporte'])->name('delete');
 }); 
+
+Route::prefix('graficos')->name('graficos.')->group(function(){
+      route::get('/',[GraficoController::class,'graficosIndex'])->name('index');
+});
 
 require __DIR__.'/auth.php';

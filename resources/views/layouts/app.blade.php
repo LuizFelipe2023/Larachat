@@ -40,6 +40,11 @@
                         <i class="bi bi-person-circle me-2"></i> Mensagens do Suporte
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('graficos.index') }}" class="nav-link text-white py-2 d-flex align-items-center">
+                        <i class="bi bi-bar-chart me-2"></i> Gráficos
+                    </a>
+                </li>
             </ul>
             <hr class="border-white mx-3">
         </div>
@@ -79,4 +84,5 @@
         @csrf
     </form>
 </body>
+
 </html>
