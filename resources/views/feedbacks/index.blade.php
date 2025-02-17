@@ -15,7 +15,28 @@
                         <h3 class="text-center fw-bold mt-3 mb-3">Lista de Feedbacks</h3>
                     </div>
                     <div class="card-body">
-                        <div class="row g-3 mb-4">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+                        <div class="row g-3 m
+                            <div class=" row g-3 mb-4">
                             <div class="col-md-4">
                                 <label for="nivel_satisfacao" class="fw-bold">Nível de Satisfação:</label>
                                 <select name="filter-nivel" id="filter-nivel" class="form-select pointer">
@@ -137,7 +158,7 @@
                                                     }
                                                 };
 
-                                               
+
                                                 $('#editModal{{ $feedback->id }}').on('shown.bs.modal', function () {
                                                     var descricaoField = document.getElementById('descricao{{ $feedback->id }}');
                                                     if (descricaoField && !CKEDITOR.instances['descricao{{ $feedback->id }}']) {
@@ -145,7 +166,7 @@
                                                     }
                                                 });
 
-                                               
+
                                                 $('#editModal{{ $feedback->id }}').on('hidden.bs.modal', function () {
                                                     if (CKEDITOR.instances['descricao{{ $feedback->id }}']) {
                                                         CKEDITOR.instances['descricao{{ $feedback->id }}'].destroy();

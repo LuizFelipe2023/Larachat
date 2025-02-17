@@ -32,6 +32,26 @@
                         <h3 class="text-center fw-bold mt-3 mb-3">Lista de Mensagens do Suporte</h3>
                     </div>
                     <div class="card-body">
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @if (session('success'))
+                            <div class="alert alert-success">
+                                {{ session('success') }}
+                            </div>
+                        @endif
+
+                        @if (session('error'))
+                            <div class="alert alert-danger">
+                                {{ session('error') }}
+                            </div>
+                        @endif
                         <div class="row g-3 mb-4">
                             <div class="col-md-4 mt-4 mb-4">
                                 <label for="filter-tipo">Filtro por Tipo</label>
