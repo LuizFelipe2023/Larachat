@@ -46,7 +46,7 @@ class FeedbackController extends Controller
         } catch (Exception $e) {
             Log::error('Erro ao atualizar o feedback com ID: ' . $id . '. Erro: ' . $e->getMessage()); 
 
-            return redirect()->route('feedbacks.index')->with('error', 'Erro ao atualizar o feedback.');
+            return redirect()->route('feedbacks.index')->with('error', 'Erro ao atualizar o feedback.')->withInput();
         }
     }
 
