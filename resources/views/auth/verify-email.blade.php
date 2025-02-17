@@ -4,26 +4,36 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Verify Your Email Address') }}</div>
+            <div class="card border-0 shadow-lg rounded-lg">
+                <div class="card-header text-center py-4">
+                    <h3>{{ __('Verifique Seu Endereço de E-mail') }}</h3>
+                </div>
 
-                <div class="card-body">
+                <div class="card-body p-5">
                     @if (session('status') == 'verification-link-sent')
-                        <div class="alert alert-success" role="alert">
-                            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
+                        <div class="alert alert-success mb-4" role="alert">
+                            {{ __('Um novo link de verificação foi enviado para o endereço de e-mail fornecido durante o registro.') }}
                         </div>
                     @endif
 
-                    <div class="mb-3">
-                        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}                        
+                    <div class="mb-4">
+                        {{ __('Obrigado por se inscrever! Antes de começar, por favor, verifique seu endereço de e-mail clicando no link que enviamos para você. Se você não recebeu o e-mail, podemos enviar outro.') }}
                     </div>
 
                     <form class="d-inline" method="POST" action="{{ route('verification.send') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">
-                            {{ __('Resend Verification Email') }}
-                        </button>
+                        <div class="form-group text-center mb-4">
+                            <button type="submit" class="btn btn-primary w-100 py-2">
+                                {{ __('Reenviar E-mail de Verificação') }}
+                            </button>
+                        </div>
                     </form>
+
+                    <div class="form-group text-center">
+                        <a class="btn btn-link" href="{{ route('login') }}">
+                            {{ __('Voltar para Login') }}
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
