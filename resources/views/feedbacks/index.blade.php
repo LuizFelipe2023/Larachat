@@ -10,7 +10,7 @@
         <div class="row justify-content-center align-items-center">
             <div class="col-md-12 mt-5">
                 <div class="card rounded-3 shadow-sm border-1">
-                    <div class="card-header bg-secondary text-white">
+                    <div class="card-header bg-dark text-white">
                         <h3 class="text-center fw-bold mt-3 mb-3">Lista de Feedbacks</h3>
                     </div>
                     <div class="card-body">
