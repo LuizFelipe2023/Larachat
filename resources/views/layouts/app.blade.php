@@ -33,7 +33,7 @@
                 <li class="nav-item">
                     <a href="{{ route('feedbacks.index') }}"
                         class="nav-link text-white {{ request()->is('feedbacks.index') ? 'active' : '' }} py-2 d-flex align-items-center">
-                        <i class="bi bi-house-door me-2"></i> Feedbacks
+                        <i class="bi bi-card-text me-2"></i> Feedbacks
                     </a>
                 </li>
                 <li class="nav-item">
