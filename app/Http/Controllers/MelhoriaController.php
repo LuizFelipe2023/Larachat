@@ -19,10 +19,10 @@ class MelhoriaController extends Controller
         try {
             $validatedData = $request->validated();
             $this->melhoriaService->create($validatedData);
-            return redirect()->back()->with('success', 'Formulario de Melhorias foi submetido com sucesso');
+            return redirect()->back()->with('success', 'A inserção de uma ação de melhoria foi um sucesso');
         } catch (Exception $e) {
             Log::error('Houve um erro na inserção da melhoria. Erro: ' . $e->getMessage());
-            return redirect()->back()->withErrors('Houve um erro inesperado ao inserir o registro de melhoria no sistema. Por favor tente novamente');
+            return redirect()->back()->withErrors('Houve um erro inesperado ao inserir o registro de uma ação de melhoria no sistema. Por favor tente novamente');
         }
     }
 
@@ -31,10 +31,10 @@ class MelhoriaController extends Controller
         try {
             $validatedData = $request->validated();
             $this->melhoriaService->update($id, $validatedData);
-            return redirect()->back()->with('success', 'A atualização da melhoria foi um sucesso');
+            return redirect()->back()->with('success', 'A atualização de uma ação de melhoria foi um sucesso');
         } catch (Exception $e) {
             Log::error('Houve um erro na atualização da melhoria. Erro: ' . $e->getMessage());
-            return redirect()->back()->withErrors('Houve um erro inesperado ao atualizar o registro de melhoria no sistema. Por favor, tente novamente.');
+            return redirect()->back()->withErrors('Houve um erro inesperado ao atualizar o registro de uma ação de melhoria no sistema. Por favor, tente novamente.');
         }
     }
 
@@ -42,10 +42,10 @@ class MelhoriaController extends Controller
     {
         try {
             $this->melhoriaService->delete($id);
-            return redirect()->back()->with('success', 'A melhoria foi deletada com sucesso.');
+            return redirect()->back()->with('success', 'A ação de melhoria foi deletada com sucesso.');
         } catch (Exception $e) {
             Log::error('Houve um erro ao deletar a melhoria. Erro: ' . $e->getMessage());
-            return redirect()->back()->withErrors('Houve um erro inesperado ao tentar deletar o registro de melhoria. Por favor, tente novamente.');
+            return redirect()->back()->withErrors('Houve um erro inesperado ao tentar deletar o registro de uma ação de melhoria. Por favor, tente novamente.');
         }
     }
 

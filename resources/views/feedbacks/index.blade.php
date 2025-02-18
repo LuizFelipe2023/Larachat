@@ -6,26 +6,7 @@
 <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 <script defer src="{{ asset('ckeditor/ckeditor.js') }}"></script>
-<script defer>
-    document.addEventListener("DOMContentLoaded", function () {
-        let ckeditorConfig = {
-            extraPlugins: 'wordcount',
-            wordcount: {
-                showCharCount: true,
-                maxCharCount: 10000,
-                charCountMsg: 'Caracteres restantes: {0}',
-                maxCharCountMsg: 'Você atingiu o limite máximo de caracteres permitidos.'
-            }
-        };
-
-        if (document.getElementById('descricao')) {
-            CKEDITOR.replace('descricao', ckeditorConfig);
-        }
-        if(document.getElementById('acao')){
-            CKEDITOR.replace('acao',ckeditorConfig);
-        }
-    });
-</script>
+<script defer src="{{ asset('js/indexFeedbacks.js') }}"></script>
 @section('content')
 <div class="container">
     <div class="row justify-content-center align-items-center">
