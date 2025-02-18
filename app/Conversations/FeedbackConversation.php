@@ -94,6 +94,7 @@ class FeedbackConversation extends Conversation
             'descricao' => $this->descricao,
             'nome_cliente' => $this->nomeCliente,
             'cpf_cliente' => $this->cpfCliente,
+            'situacao_fk' => 1
         ]);
 
         $this->say('Obrigado pelo seu feedback!');
