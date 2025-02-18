@@ -1,14 +1,10 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
     <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -16,7 +12,6 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     @stack('styles')
 </head>
-
 <body style="background: url('{{ asset('img/25097.jpg') }}') no-repeat center center fixed; background-size: cover;">
     <div class="d-flex">
         <!-- Sidebar -->
@@ -56,10 +51,7 @@
                 </li>
             </ul>
         </div>
-
-        <!-- Main Content -->
         <div class="content" style="margin-left: 250px; padding: 80px 20px; flex-grow: 1;">
-            <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm px-3"
                 style="z-index: 1050; width: calc(100% - 250px); margin-left: 250px;">
                 <div class="container-fluid">
@@ -68,7 +60,6 @@
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-
                     @if(Auth::check())
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav ms-auto">
@@ -92,16 +83,13 @@
                     @endif
                 </div>
             </nav>
-
             <div class="container mt-4">
                 @yield('content')
             </div>
         </div>
     </div>
-
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
 </body>
-
 </html>

@@ -36,6 +36,17 @@
                         </div>
 
                         <div class="form-group mb-4">
+                            <label for="cpf" class="form-label">{{ __('CPF') }}</label>
+                            <input id="cpf" type="cpf" class="form-control @error('cpf') is-invalid @enderror" name="cpf" value="{{ old('cpf') }}" required autocomplete="cpf">
+
+                            @error('cpf')
+                                <div class="invalid-feedback">
+                                    <strong>{{ $message }}</strong>
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="form-group mb-4">
                             <label for="password" class="form-label">{{ __('Senha') }}</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 

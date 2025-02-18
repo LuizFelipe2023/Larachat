@@ -20,15 +20,16 @@
                         @csrf
 
                         <div class="form-group mb-4">
-                            <label for="email" class="form-label">{{ __('Email') }}</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <label for="cpf" class="form-label">{{ __('CPF') }}</label>
+                            <input id="cpf" type="text" class="form-control @error('cpf') is-invalid @enderror" name="cpf" value="{{ old('cpf') }}" required autocomplete="cpf" autofocus>
 
-                            @error('email')
+                            @error('cpf')
                                 <div class="invalid-feedback">
                                     <strong>{{ $message }}</strong>
                                 </div>
                             @enderror
                         </div>
+
 
                         <div class="form-group mb-4">
                             <label for="password" class="form-label">{{ __('Senha') }}</label>

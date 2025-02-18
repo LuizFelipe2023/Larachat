@@ -134,7 +134,6 @@
                                                             <option value="5" {{ $feedback->nivel_satisfacao == 5 ? 'selected' : '' }}>5</option>
                                                         </select>
                                                     </div>
-
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                                         <button type="submit" class="btn btn-primary">Salvar Alterações</button>
@@ -188,7 +187,6 @@
                                                             @endforeach
                                                         </select>
                                                     </div>
-
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
                                                         <button type="submit" class="btn btn-primary">Alterar Situação</button>
