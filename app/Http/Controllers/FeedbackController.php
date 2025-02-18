@@ -21,6 +21,13 @@ class FeedbackController extends Controller
         $this->feedbackService = $feedbackService;
         $this->situacaoService = $situacaoService;
     }
+
+    public function publicFeedbacks()
+    { 
+           $feedbacks = $this->feedbackService->getFeedbackWithMelhorias();
+           $tipos = $this->situacaoService->getAll();
+           return view('feedbacks.publicFeedbacks',compact('feedbacks','tipos'));
+    }
     
     public function index()
     {

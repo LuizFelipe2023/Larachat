@@ -43,6 +43,7 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('feedbacks')->name('feedbacks.')->group(function() {
     Route::get('/', [FeedbackController::class, 'index'])->name('index');
+    Route::get('/public',[FeedbackController::class,'publicFeedbacks'])->name('public');
     Route::get('{id}/feedback', [FeedbackController::class, 'showFeedback'])->name('show');
     Route::get('{id}/edit', [FeedbackController::class, 'editFeedback'])->name('edit');
     Route::put('{id}/update', [FeedbackController::class, 'updateFeedback'])->name('update');

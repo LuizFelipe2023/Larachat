@@ -40,6 +40,9 @@
 
         <a href="{{ route('login') }}" class="btn btn-custom btn-login">Acessar Dashboard</a>
 
+        <a href="{{ route('feedbacks.public') }}" class="btn btn-custom btn-feedback-publicos mt-3">Ver Feedbacks Públicos</a>
+
+
         <p class="footer-text">Precisa de ajuda? Envie uma mensagem para o nosso suporte!</p>
 
         <a href="/suportes/create" class="btn btn-custom btn-support">

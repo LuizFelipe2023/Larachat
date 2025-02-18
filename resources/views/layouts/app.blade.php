@@ -20,11 +20,17 @@
     <div class="d-flex">
         <div class="sidebar bg-dark"
             style="width: 250px; height: 100vh; position: fixed; top: 0; left: 0; padding-top: 40px; padding-bottom: 40px; z-index: 1000;">
+            @if(Auth::check())
             <a href="{{ route('dashboard') }}"
                 class="d-flex justify-content-center align-items-center mb-4 text-white text-decoration-none mt-5 mb-5">
                 <i class="bi bi-house-door me-2"></i> 
                 <span class="fs-4 fw-bold">Painel Administrativo</span>
             </a>
+            @else
+                <span class="text-white fs-4 fw-bold">Painel Administrativo</span>
+            @endif
+
+            @if(Auth::check())
             <hr class="border-white mx-3">
             <ul class="nav flex-column mb-auto">
                 <li class="nav-item">
@@ -44,6 +50,7 @@
                     </a>
                 </li>
             </ul>
+            @endif
             <hr class="border-white mx-3">
         </div>
         <div class="content" style="margin-left: 250px; padding: 20px; flex-grow: 1; padding-top: 80px;">
@@ -55,6 +62,7 @@
                         aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
+                    @if(Auth::check())
                     <div class="collapse navbar-collapse" id="navbarNav">
                         <ul class="navbar-nav ms-auto">
                             <li class="nav-item dropdown">
@@ -71,6 +79,7 @@
                             </li>
                         </ul>
                     </div>
+                    @endif
                 </div>
             </nav>
             <div class="container">

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Melhoria extends Model
 {
-      protected $fillable = ['feedback_id','acao'];
+      protected $fillable = ['feedback_id','acao','data_implementacao'];
 
       public function feedback()
       {

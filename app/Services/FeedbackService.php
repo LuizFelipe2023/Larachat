@@ -7,6 +7,10 @@ use App\Models\Feedback;
 
 class FeedbackService
 {
+       public function getFeedbackWithMelhorias()
+       {
+              return Feedback::with('melhorias')->get();
+       }
 
        public function getAll()
        {

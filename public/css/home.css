@@ -77,6 +77,22 @@ body {
     color: #ddd;
 }
 
+.btn-feedback-publicos {
+    background: #6e8efb; 
+    color: white;
+    margin-top: 15px;
+}
+
+.btn-feedback-publicos:hover {
+    background: #4a6ad7; 
+}
+
+@media (max-width: 576px) {
+    .btn-feedback-publicos {
+        font-size: 1rem;
+    }
+}
+
 @media (max-width: 576px) {
     .chat-container {
         padding: 20px;
