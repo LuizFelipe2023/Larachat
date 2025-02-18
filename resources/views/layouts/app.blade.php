@@ -14,9 +14,8 @@
 </head>
 <body style="background: url('{{ asset('img/25097.jpg') }}') no-repeat center center fixed; background-size: cover;">
     <div class="d-flex">
-        <!-- Sidebar -->
-        <div class="sidebar bg-dark shadow-lg"
-            style="width: 250px; height: 100vh; position: fixed; top: 0; left: 0; padding: 40px 20px; z-index: 1000;">
+        <div class="sidebar shadow-lg"
+            style="width: 250px; height: 100vh; position: fixed; top: 0; left: 0; padding: 40px 20px; z-index: 1000; background-color: #191C24;">
             <div class="text-center mb-5">
                 <i class="bi bi-house-door text-white fs-3"></i>
                 <h5 class="text-white fw-bold mt-2">Painel Administrativo</h5>
@@ -52,8 +51,8 @@
             </ul>
         </div>
         <div class="content" style="margin-left: 250px; padding: 80px 20px; flex-grow: 1;">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow-sm px-3"
-                style="z-index: 1050; width: calc(100% - 250px); margin-left: 250px;">
+            <nav class="navbar navbar-expand-lg fixed-top shadow-sm px-3"
+                style="z-index: 1050; width: calc(100% - 250px); margin-left: 250px; background-color: #191C24;">
                 <div class="container-fluid">
                     <span class="navbar-text text-white fs-5 fw-semibold">@yield('title')</span>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
