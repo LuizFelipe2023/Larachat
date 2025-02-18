@@ -43,6 +43,7 @@ Route::prefix('feedbacks')->name('feedbacks.')->group(function() {
     Route::get('{id}/edit', [FeedbackController::class, 'editFeedback'])->name('edit');
     Route::put('{id}/update', [FeedbackController::class, 'updateFeedback'])->name('update');
     Route::delete('{id}/delete', [FeedbackController::class, 'deleteFeedback'])->name('delete');
+    Route::put('/{id}/situacao',[FeedbackController::class,'updateSituacao'])->name('alterarSituacao');
 });
 
 Route::prefix('suportes')->name('suportes.')->group(function(){

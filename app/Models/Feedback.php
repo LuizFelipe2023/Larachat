@@ -12,7 +12,7 @@ class Feedback extends Model
 
       public function situacao()
       {
-            return $this->belongsTo(SituacaoFeedback::class, 'situacao_fk');
+            return $this->belongsTo(SituacaoFeedback::class, 'situacao_fk','id');
       }
 
 }

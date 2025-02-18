@@ -3,18 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\FeedbackRequest;
+use App\Http\Requests\SituacaoRequest;
+use App\Models\SituacaoFeedback;
 use Exception;
 use Illuminate\Http\Request;
 use App\Services\FeedbackService;
 use Illuminate\Support\Facades\Log; 
+use App\Services\SituacaoService;
 
 class FeedbackController extends Controller
 {
     protected $feedbackService;
+    protected $situacaoService;
 
-    public function __construct(FeedbackService $feedbackService)
+    public function __construct(FeedbackService $feedbackService, SituacaoService $situacaoService)
     {
         $this->feedbackService = $feedbackService;
+        $this->situacaoService = $situacaoService;
     }
     
     public function index()
@@ -22,10 +27,11 @@ class FeedbackController extends Controller
         Log::info('Acessando a lista de feedbacks'); 
 
         $feedbacks = $this->feedbackService->getAll();
+        $situacoes = $this->situacaoService->getAll();
 
-        Log::info('Feedbacks carregados com sucesso', ['feedbacks' => $feedbacks]); 
+        Log::info('Feedbacks e situações carregadas com sucesso', ['feedbacks' => $feedbacks, 'situacoes' => $situacoes]); 
 
-        return view('feedbacks.index', compact('feedbacks'));
+        return view('feedbacks.index', compact('feedbacks','situacoes'));
     }
  
 
@@ -66,4 +72,17 @@ class FeedbackController extends Controller
             return redirect()->route('feedbacks.index')->with('error', 'Erro ao excluir o feedback.');
         }
     }
+
+    public function updateSituacao($id, SituacaoRequest $request)
+    {
+        try {
+            $validatedData = $request->validated();
+            $this->feedbackService->updateStatus($id, $validatedData['situacao_fk']);
+            return redirect()->back()->with('success', 'Situação do Feedback foi atualizada com sucesso');
+        } catch (Exception $e) {
+            Log::error('Erro ao atualizar a situação do Feedback. Erro: '.$e->getMessage());
+            return redirect()->back()->withErrors('Houve um erro inesperado ao atualizar a situação do Feedback, por favor tente novamente');
+        }
+    }
+    
 }

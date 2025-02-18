@@ -25,7 +25,7 @@ class FeedbackRequest extends FormRequest
             'nivel_satisfacao' => 'required|integer|min:1|max:5',
             'descricao' => 'required|string|min:3|max:1000',
             'nome_cliente' => 'nullable|string|min:2|max:500',
-            'cpf_cliente' => 'nullable|string|min:11|max:14'
+            'cpf_cliente' => 'nullable|string|min:11|max:14',
         ];
     }
 
@@ -48,7 +48,9 @@ class FeedbackRequest extends FormRequest
 
             'cpf_cliente.string' => 'O CPF deve ser um texto.',
             'cpf_cliente.min' => 'O CPF deve ter pelo menos 11 caracteres.',
-            'cpf_cliente.max' => 'O CPF não pode ter mais de 14 caracteres.'
+            'cpf_cliente.max' => 'O CPF não pode ter mais de 14 caracteres.',
+
+            'situacao_fk.exists' => "Escolha uma opção válida"
         ];
     }
 
