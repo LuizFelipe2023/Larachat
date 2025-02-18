@@ -1,78 +1,67 @@
-<div class="card">
-    <div class="card-header">{{ __('Profile Information') }}</div>
+<div class="card border-0 shadow-sm p-4 bg-white">
+    <div class="card-header bg-white border-bottom pb-2">
+        <h5 class="fw-bold text-uppercase text-dark text-center">{{ __('Informações do Perfil') }}</h5>
+    </div>
 
     <div class="card-body">
-        <form
-            id="send-verification"
-            class="d-none"
-            method="post"
-            action="{{ route('verification.send') }}"
-        >
+        <form id="send-verification" class="d-none" method="post" action="{{ route('verification.send') }}">
             @csrf
         </form>
+
         <form method="POST" action="{{ route('profile.update') }}">
             @csrf
             @method('patch')
 
-            <div class="row mb-3">
-                <label for="name" class="col-md-4 col-form-label text-md-end">
-                    {{ __('Name') }}
-                </label>
+            <div class="mb-4">
+                <label for="name" class="form-label text-dark fw-bold">{{ __('Nome') }}</label>
+                <input id="name" type="text"
+                    class="form-control border border-dark rounded-2 bg-white text-dark shadow-sm @error('name') is-invalid @enderror"
+                    name="name" value="{{ old('name', $user->name) }}" required autofocus autocomplete="name">
 
-                <div class="col-md-6">
-                    <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name', $user->name) }}" required autofocus autocomplete="name">
-
-                    @error('name')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
+                @error('name')
+                    <div class="invalid-feedback d-block text-danger mt-1">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
             </div>
 
-            <div class="row mb-3">
-                <label for="email" class="col-md-4 col-form-label text-md-end">
-                    {{ __('Email') }}
-                </label>
+            <div class="mb-4">
+                <label for="email" class="form-label text-dark fw-bold">{{ __('E-mail') }}</label>
+                <input id="email" type="email"
+                    class="form-control border border-dark rounded-2 bg-white text-dark shadow-sm @error('email') is-invalid @enderror"
+                    name="email" value="{{ old('email', $user->email) }}" required autocomplete="email">
 
-                <div class="col-md-6">
-                    <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email', $user->email) }}" required autocomplete="email">
+                @error('email')
+                    <div class="invalid-feedback d-block text-danger mt-1">
+                        <strong>{{ $message }}</strong>
+                    </div>
+                @enderror
 
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
+                    <div class="alert alert-warning mt-3 p-2 small">
+                        {{ __('Seu endereço de e-mail ainda não foi verificado.') }}
+                        <button form="send-verification" class="btn btn-link text-decoration-none p-0 text-primary">
+                            {{ __('Clique aqui para reenviar o e-mail de verificação.') }}
+                        </button>
 
-                    @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && ! $user->hasVerifiedEmail())
-                        <div class="mt-2">
-                            <p class="mb-0">
-                                {{ __('Your email address is unverified.') }}
-
-                                <button form="send-verification" class="btn btn-link p-0">
-                                    {{ __('Click here to re-send the verification email.') }}
-                                </button>
-                            </p>
-
-                            @if (session('status') === 'verification-link-sent')
-                                <div class="alert alert-success mt-3 mb-0" role="alert">
-                                    {{ __('A new verification link has been sent to your email address.') }}
-                                </div>
-                            @endif
-                        </div>
-                    @endif
-                </div>
+                        @if (session('status') === 'verification-link-sent')
+                            <div class="alert alert-success mt-2 p-2 small">
+                                {{ __('Um novo link de verificação foi enviado para seu e-mail.') }}
+                            </div>
+                        @endif
+                    </div>
+                @endif
             </div>
 
-            <div class="row mb-0">
-                <div class="col-md-6 offset-md-4">
-                    <button type="submit" class="btn btn-primary">
-                        {{ __('Save') }}
-                    </button>
-                    @if (session('status') === 'profile-updated')
-                        <span class="m-1 fade-out">{{ __('Saved.') }}</span>
-                    @endif
-                </div>
+            <div class="d-flex align-items-center">
+                <button type="submit" class="btn btn-dark rounded-2 px-4 py-2 text-uppercase fw-bold shadow-sm w-100">
+                    {{ __('Salvar') }}
+                </button>
+            </div>
+            <div class="d-flex justify-content-center align-items-center mt-4 mb-4">
+                @if (session('status') === 'profile-updated')
+                    <span class="ms-3 text-success fade-out">{{ __('Salvo.') }}</span>
+                @endif
             </div>
         </form>
     </div>

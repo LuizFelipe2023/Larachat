@@ -13,12 +13,9 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>@yield('title', 'Sistema de Coleta de Feedback')</title>
-
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
-
     @stack('styles')
 </head>
-
 <body style="background: url('{{ asset('img/25097.jpg') }}') no-repeat center center fixed; background-size: cover;">
     <div class="d-flex">
         <div class="sidebar bg-dark"
@@ -85,5 +82,4 @@
         @csrf
     </form>
 </body>
-
 </html>

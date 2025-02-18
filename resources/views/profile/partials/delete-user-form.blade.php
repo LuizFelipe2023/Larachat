@@ -1,73 +1,72 @@
-<div class="card">
-    <div class="card-header">{{ __('Delete Account') }}</div>
+<div class="card shadow-lg border-0 rounded-4 p-4">
+    <div class="card-header bg-light text-center border-bottom-0">
+        <h3 class="fw-bold text-danger">{{ __('Excluir Conta') }}</h3>
+    </div>
 
     <div class="card-body">
-        <div class="mb-3">
-            {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.') }}
-        </div>
+        <p class="text-muted text-center">
+            {{ __('Uma vez excluída, todos os seus dados serão permanentemente removidos. Baixe qualquer informação importante antes de prosseguir.') }}
+        </p>
 
-        <div class="row mb-0">
-            <div class="col-md-6">
-                <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
-                    {{ __('Delete Account') }}
-                </button>
-            </div>
+        <div class="d-grid">
+            <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+                {{ __('Excluir Conta') }}
+            </button>
         </div>
     </div>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="deleteAccountModalLabel">
-            {{ __('Are you sure you want to delete your account?') }}
-        </h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="mb-3">
-            {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
-        </div>
-        <form id="deleteAccountForm" method="post" action="{{ route('profile.destroy') }}" class="p-6">
-            @csrf
-            @method('delete')
-
-            <div>
-                <input type="password" class="form-control @error('password', 'userDeletion') is-invalid @enderror" name="password" placeholder="{{ __('Password') }}" required>
-
-                @error('password', 'userDeletion')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                @enderror
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content rounded-4">
+            <div class="modal-header bg-danger text-white">
+                <h5 class="modal-title fw-bold" id="deleteAccountModalLabel">
+                    {{ __('Tem certeza que deseja excluir sua conta?') }}
+                </h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
             </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
-            {{ __('Cancel') }}
-        </button>
-        <button type="submit" class="btn btn-danger" form="deleteAccountForm">
-            {{ __('Delete Account') }}
-        </button>
-      </div>
+            <div class="modal-body">
+                <p class="text-muted text-center">
+                    {{ __('Todos os seus dados serão permanentemente excluídos. Digite sua senha para confirmar.') }}
+                </p>
+
+                <form id="deleteAccountForm" method="post" action="{{ route('profile.destroy') }}">
+                    @csrf
+                    @method('delete')
+
+                    <div class="mb-3">
+                        <input type="password" class="form-control form-control-lg @error('password', 'userDeletion') is-invalid @enderror" name="password" placeholder="{{ __('Digite sua senha') }}" required>
+
+                        @error('password', 'userDeletion')
+                            <div class="alert alert-danger mt-2 p-2">
+                                <strong>{{ $message }}</strong>
+                            </div>
+                        @enderror
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">
+                    {{ __('Cancelar') }}
+                </button>
+                <button type="submit" class="btn btn-danger btn-lg" form="deleteAccountForm">
+                    {{ __('Excluir Conta') }}
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 @push('scripts')
     @php $shouldOpenModal = $errors->userDeletion->isNotEmpty(); @endphp
 
     <script>
-        let shouldOpenModal = {{ Js::from($shouldOpenModal) }};
-
-        if (shouldOpenModal) {
-            window.addEventListener('load', function() {
-                let deleteAccountModal = new bootstrap.Modal('#deleteAccountModal');
-                deleteAccountModal.toggle();
-            });
-        }
+        document.addEventListener('DOMContentLoaded', function () {
+            if ({{ Js::from($shouldOpenModal) }}) {
+                let deleteAccountModal = new bootstrap.Modal(document.getElementById('deleteAccountModal'));
+                deleteAccountModal.show();
+            }
+        });
     </script>
-@endPush
+@endpush
