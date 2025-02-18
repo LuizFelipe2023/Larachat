@@ -7,6 +7,9 @@ use App\Http\Controllers\SuporteController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\NewPasswordController;
+use App\Http\Controllers\ChatController;
+
+Route::match(['get', 'post'], '/chat',[ChatController::class,'handle'])->name('chat');
 
 Route::middleware('guest')->group(function () {
     Route::get('/forgot-password', [PasswordResetLinkController::class, 'create'])

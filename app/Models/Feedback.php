@@ -15,4 +15,9 @@ class Feedback extends Model
             return $this->belongsTo(SituacaoFeedback::class, 'situacao_fk','id');
       }
 
+      public function melhorias()
+      {
+             return $this->hasMany(Melhoria::class);
+      }
+
 }
