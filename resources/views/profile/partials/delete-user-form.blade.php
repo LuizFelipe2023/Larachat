@@ -1,15 +1,15 @@
-<div class="card shadow-lg border-0 rounded-4 p-4">
+<div class="card shadow-lg border-0 rounded-4 p-3">
     <div class="card-header bg-light text-center border-bottom-0">
         <h3 class="fw-bold text-danger">{{ __('Excluir Conta') }}</h3>
     </div>
 
     <div class="card-body">
-        <p class="text-muted text-center">
+        <p class="text-muted text-center mb-3">
             {{ __('Uma vez excluída, todos os seus dados serão permanentemente removidos. Baixe qualquer informação importante antes de prosseguir.') }}
         </p>
 
         <div class="d-grid">
-            <button type="button" class="btn btn-danger btn-lg" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
+            <button type="button" class="btn btn-danger btn-md" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">
                 {{ __('Excluir Conta') }}
             </button>
         </div>
@@ -27,7 +27,7 @@
                 <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
             </div>
             <div class="modal-body">
-                <p class="text-muted text-center">
+                <p class="text-muted text-center mb-3">
                     {{ __('Todos os seus dados serão permanentemente excluídos. Digite sua senha para confirmar.') }}
                 </p>
 
@@ -50,23 +50,10 @@
                 <button type="button" class="btn btn-secondary btn-lg" data-bs-dismiss="modal">
                     {{ __('Cancelar') }}
                 </button>
-                <button type="submit" class="btn btn-danger btn-lg" form="deleteAccountForm">
+                <button type="submit" class="btn btn-danger btn-md" form="deleteAccountForm">
                     {{ __('Excluir Conta') }}
                 </button>
             </div>
         </div>
     </div>
 </div>
-
-@push('scripts')
-    @php $shouldOpenModal = $errors->userDeletion->isNotEmpty(); @endphp
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            if ({{ Js::from($shouldOpenModal) }}) {
-                let deleteAccountModal = new bootstrap.Modal(document.getElementById('deleteAccountModal'));
-                deleteAccountModal.show();
-            }
-        });
-    </script>
-@endpush

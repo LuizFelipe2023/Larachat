@@ -8,7 +8,7 @@
 <script defer src="{{ asset('js/indexSuportes.js') }}"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 @section('content')
-<div class="container">
+<div class="container vh-100 d-flex align-items-center justify-content-center mt-5 mb-5">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-12 mt-5">
             <div class="card rounded-3 shadow-sm border-1">

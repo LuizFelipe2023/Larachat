@@ -1,17 +1,18 @@
 @extends('layouts.app')
 @section('title', 'Feedbacks Públicos')
+
 <script defer src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 <script defer src="{{ asset('js/jquery.dataTables.min.js') }}"></script>
 <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
 <script defer src="{{ asset('js/publicFeedbacksTable.js') }}"></script>
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center align-items-center">
+<div class="container vh-100 d-flex align-items-center justify-content-center mt-5 mb-5">
+    <div class="row justify-content-center align-items-center w-100">
         <div class="col-md-12 mb-5 mt-5">
             <div class="card rounded-3 shadow-sm border-1">
                 <div class="card-header bg-dark text-white">
-                    <h2 class="fw-bold text-center">Lista de Feedbacks com Melhorias</h2>
+                    <h2 class="fw-bold text-center mt-4 mb-4">Lista de Feedbacks com Melhorias</h2>
                 </div>
                 <div class="card-body">
                     <div class="row g-3 mb-4">
@@ -44,7 +45,8 @@
                                     <th scope="col" class="text-center fw-bold">Nivel de Satisfação</th>
                                     <th scope="col" class="text-center fw-bold">Descrição</th>
                                     <th scope="col" class="text-center fw-bold">Situação</th>
-                                    <th scope="col" class="text-center fw-bold">Ações de Melhorias</th>
+                                    <th scope="col" class="text-center fw-bold">Ação de Melhoria</th>
+                                    <th scope="col" class="text-center">Data de Implementação da Melhoria</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,10 +76,22 @@
                                         <td class="text-center">
                                             @if($feedback->melhorias && $feedback->melhorias->count() > 0)
                                                 @foreach($feedback->melhorias as $melhoria)
-                                                    <div>{!! $melhoria->acao !!}</div>
+                                                    {!! $melhoria->acao !!}
                                                 @endforeach
                                             @else
-                                                <span>-</span>
+                                                <p>-</p>
+                                            @endif
+                                        </td>
+                                        <td class="text-center">
+                                            @if($feedback->melhorias && $feedback->melhorias->count() > 0)
+                                                @foreach($feedback->melhorias as $melhoria)
+                                                    @php
+                                                        $dataImplementacao = \Carbon\Carbon::parse($melhoria->data_implementacao)->format('d/m/Y');
+                                                    @endphp
+                                                    {{ $dataImplementacao }}
+                                                @endforeach
+                                            @else
+                                                <p>-</p>
                                             @endif
                                         </td>
                                     </tr>

@@ -1,9 +1,9 @@
-<div class="card shadow-lg border-0 rounded-4 p-4">
+<div class="card shadow-lg border-0 rounded-4 p-3">
     <div class="card-header bg-light text-center border-bottom-0">
         <h3 class="fw-bold">{{ __('Atualizar Senha') }}</h3>
     </div>
     <div class="card-body">
-        <p class="text-muted text-center">
+        <p class="text-muted text-center mb-3">
             {{ __('Certifique-se de usar uma senha longa e segura.') }}
         </p>
 
@@ -42,7 +42,7 @@
             </div>
 
             <div class="d-grid">
-                <button type="submit" class="btn btn-primary btn-lg">
+                <button type="submit" class="btn btn-primary btn-md">
                     {{ __('Salvar') }}
                 </button>
             </div>

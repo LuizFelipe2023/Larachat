@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="{{ asset('css/createSuporte.css') }}">
 <script defer src="{{ asset('js/suporteForm.js') }}"></script>
 @section('content')
-<div class="container-md mt-5">
+<div class="container vh-100 d-flex align-items-center justify-content-center mt-5 mb-5">
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col-md-12 mt-5 mb-5">
             <div class="card rounded-2 shadow-sm border-1">

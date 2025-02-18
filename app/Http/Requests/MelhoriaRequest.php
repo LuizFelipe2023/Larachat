@@ -23,7 +23,8 @@ class MelhoriaRequest extends FormRequest
     {
         return [
             'feedback_id' => 'required|exists:feedbacks,id',
-            'acao' => 'required|string'
+            'acao' => 'required|string',
+            'data_implementacao' => 'required|date'
         ];
     }
 
@@ -33,8 +34,11 @@ class MelhoriaRequest extends FormRequest
             'feedback_id.required' => 'O ID do feedback é obrigatório.',
             'feedback_id.exists' => 'O ID do feedback não existe.',
             'acao.required' => 'A ação é obrigatória.',
-            'acao.string' => 'A ação deve ser um texto válido.'
+            'acao.string' => 'A ação deve ser um texto válido.',
+            'data_implementacao.required' => 'A data de implementação é obrigatória.',
+            'data_implementacao.date' => 'A data de implementação deve ser uma data válida.',
         ];
     }
+
 
 }

@@ -15,10 +15,20 @@ class MelhoriaService
     {
         return Melhoria::findOrFail($id);
     }
+    
     public function create(array $data)
     {
-        return Melhoria::create($data);
+        $melhoria = Melhoria::create($data);
+    
+        if ($melhoria) {
+            $feedback = $melhoria->feedback; 
+            $feedback->situacao_fk = 3; 
+            $feedback->save(); 
+        }
+    
+        return $melhoria;
     }
+    
     public function update($id, array $data)
     {
         $feedback = $this->getById($id);

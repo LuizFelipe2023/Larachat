@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('feedback_id');
             $table->foreign('feedback_id')->references('id')->on('feedbacks')->onDelete('restrict')->onUpdate('cascade');
             $table->text('acao');
+            $table->date('data_implementacao');
             $table->timestamps();
         });
     }

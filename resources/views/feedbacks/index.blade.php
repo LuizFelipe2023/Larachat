@@ -8,7 +8,7 @@
 <script defer src="{{ asset('ckeditor/ckeditor.js') }}"></script>
 <script defer src="{{ asset('js/indexFeedbacks.js') }}"></script>
 @section('content')
-<div class="container">
+<div class="container vh-100 d-flex align-items-center justify-content-center mt-5 mb-5">
     <div class="row justify-content-center align-items-center">
         <div class="col-md-12 mt-5">
             <div class="card rounded-3 shadow-sm border-1">
@@ -213,7 +213,13 @@
                                                         <label for="acao" class="form-label">Ação de Melhoria</label>
                                                         <textarea class="form-control" id="acao" name="acao" rows="3" required></textarea>
                                                     </div>
-                                                    <button type="submit" class="btn btn-primary">Salvar Melhoria</button>
+                                                    <div class="mb-3">
+                                                        <label for="data_implementacao" class="form-label">Data de Implementação</label>
+                                                        <input type="date" class="form-control" id="data_implementacao" name="data_implementacao" required>
+                                                    </div>
+                                                   <div class="d-flex justify-content-end mt-4">
+                                                        <button type="submit" class="btn btn-md btn-primary">Salvar Melhoria</button>
+                                                   </div>
                                                 </form>
                                             </div>
                                         </div>
