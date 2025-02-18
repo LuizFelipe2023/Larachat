@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\GraficoController;
+use App\Http\Controllers\MelhoriaController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SuporteController;
@@ -60,6 +61,12 @@ Route::prefix('suportes')->name('suportes.')->group(function(){
 
 Route::prefix('graficos')->name('graficos.')->group(function(){
       route::get('/',[GraficoController::class,'graficosIndex'])->name('index');
+});
+
+Route::prefix('melhorias')->name('melhorias.')->group(function(){
+      Route::post('/store',[MelhoriaController::class,'storeMelhoria'])->name('store');
+      Route::put('/{id}/update',[MelhoriaController::class,'updateMelhoria'])->name('update');
+      Route::delete('/{id}/delete',[MelhoriaController::class,'deleteMelhoria'])->name('delete');
 });
 
 require __DIR__.'/auth.php';
