@@ -69,20 +69,20 @@
                                     <td class="text-center">{{ $feedback->cpf_cliente ?? "-" }}</td>
                                     <td class="text-center">
                                         @switch($feedback->nivel_satisfacao)
-                                        @case(1)
-                                        <span class="badge" style="background-color: #dc3545; color: white;">Muito Insatisfeito</span>
-                                        @break
-                                        @case(2)
-                                        <span class="badge" style="background-color: #ffc107; color: black;">Insatisfeito</span>
-                                        @break
-                                        @case(3)
-                                        <span class="badge" style="background-color: #6c757d; color: white;">Neutro</span>
-                                        @break
-                                        @case(4)
-                                        <span class="badge" style="background-color: #007bff; color: white;">Satisfeito</span>
-                                        @break
-                                        @default
-                                        <span class="badge" style="background-color: #28a745; color: white;">Excelente</span>
+                                            @case(1)
+                                            <span class="badge" style="background-color: #dc3545; color: white;">Muito Insatisfeito</span>
+                                            @break
+                                            @case(2)
+                                            <span class="badge" style="background-color: #ffc107; color: black;">Insatisfeito</span>
+                                            @break
+                                            @case(3)
+                                            <span class="badge" style="background-color: #6c757d; color: white;">Neutro</span>
+                                            @break
+                                            @case(4)
+                                            <span class="badge" style="background-color: #007bff; color: white;">Satisfeito</span>
+                                            @break
+                                            @default
+                                            <span class="badge" style="background-color: #28a745; color: white;">Excelente</span>
                                         @endswitch
                                     </td>
                                     <td class="text-center">{{ $feedback->situacao->nome ?? "-"}}</td>
