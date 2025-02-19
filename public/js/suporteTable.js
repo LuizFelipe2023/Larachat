@@ -23,4 +23,9 @@ $(document).ready(function () {
         table.column(3).search(tipo).draw();
     });
 
+    $("#filter-status").on('change', function () {
+        let status = $(this).val();
+        table.column(4).search(status).draw();
+    });
+
 });

@@ -5,14 +5,17 @@ use App\Services\SuporteService;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log; 
+use App\Services\SituacaoSuporteService;
 
 class SuporteController extends Controller
 {
     protected $suporteService;
+    protected $situacaoSuporteService;
 
-    public function __construct(SuporteService $suporteService)
+    public function __construct(SuporteService $suporteService, SituacaoSuporteService $situacaoSuporteService)
     {
         $this->suporteService = $suporteService;
+        $this->situacaoSuporteService = $situacaoSuporteService;
     }
 
     public function indexSuporte()
@@ -20,10 +23,11 @@ class SuporteController extends Controller
         Log::info('Acessando a lista de suportes'); 
 
         $suportes = $this->suporteService->getAll();
+        $statuses = $this->situacaoSuporteService->getAll();
 
         Log::info('Suportes carregados', ['suportes' => $suportes]); 
 
-        return view('suportes.index', compact('suportes'));
+        return view('suportes.index', compact('suportes','statuses'));
     }
 
     public function createSuporte()

@@ -38,12 +38,21 @@
                     @endif
                     <div class="row g-3 mb-4">
                         <div class="col-md-4 mt-4 mb-4">
-                            <label for="filter-tipo">Filtro por Tipo</label>
+                            <label for="filter-tipo" class="fw-bold">Filtro por Tipo</label>
                             <select name="filter-tipo" id="filter-tipo" class="form-select pointer">
                                 <option value="">Escolha um Tipo:</option>
                                 <option value="Técnica">Técnica</option>
                                 <option value="Comercial">Comercial</option>
                                 <option value="Outro">Outro</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4 mt-4 mb-4">
+                            <label for="filter-status" class="fw-bold">Filtro por Status</label>
+                            <select name="filter-status" id="filter-status" class="form-select pointer">
+                                <option value="">Escolha um Status</option>
+                                 @foreach ($statuses as $status)
+                                   <option value="{{ $status->nome }}">{{ $status->nome }}</option>
+                                 @endforeach
                             </select>
                         </div>
                     </div>
@@ -55,6 +64,7 @@
                                     <th class="text-center"><i class="fas fa-phone"></i> Telefone do Cliente</th>
                                     <th class="text-center"><i class="fas fa-envelope"></i> Email do Cliente</th>
                                     <th class="text-center"><i class="fas fa-question-circle"></i> Tipo de Dúvida</th>
+                                    <td class="text-center"><i class="fas fa-info-circle"></i> Status</td>
                                     <th class="text-center"><i class="fas fa-comment-alt"></i> Descrição</th>
                                     <th class="text-center"><i class="fas fa-cogs"></i> Ações</th>
                                 </tr>
@@ -66,6 +76,7 @@
                                     <td class="text-center">{{ $suporte->telefone_cliente ?? '-' }}</td>
                                     <td class="text-center">{{ $suporte->email_cliente ?? '-' }}</td>
                                     <td class="text-center">{{ $suporte->tipo_duvida }}</td>
+                                    <td class="text-center">{{ $suporte->status->nome ?? '-' }}</td>
                                     <td class="text-center">{!!$suporte->descricao !!}</td>
                                     <td class="text-center">
                                         <div class="dropdown">
