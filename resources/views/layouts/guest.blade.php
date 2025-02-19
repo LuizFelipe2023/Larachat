@@ -30,6 +30,7 @@
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="authDropdown">
                                 <li><a class="dropdown-item" href="{{ route('login') }}">Login</a></li>
+                                <li><a class ="dropdown-item" href = "{{ route('home') }}">Home</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.guest')
 @section('title', 'Feedbacks Públicos')
 
 <script defer src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>

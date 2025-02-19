@@ -40,7 +40,8 @@
 
         <a href="{{ route('login') }}" class="btn btn-custom btn-login">Acessar Dashboard</a>
 
-        <a href="{{ route('feedbacks.public') }}" class="btn btn-custom btn-feedback-publicos mt-3">Ver Feedbacks Públicos</a>
+        <a href="{{ route('feedbacks.public') }}" class="btn btn-custom btn-feedback-publicos mt-3">Ver Feedbacks
+            Públicos</a>
 
 
         <p class="footer-text">Precisa de ajuda? Envie uma mensagem para o nosso suporte!</p>
@@ -48,6 +49,38 @@
         <a href="/suportes/create" class="btn btn-custom btn-support">
             <i class="fas fa-headset"></i> Enviar Mensagem
         </a>
+
+        <button class="btn btn-custom btn-search-suporte mt-3" data-bs-toggle="modal"
+            data-bs-target="#searchSuporteModal">
+            <i class="fas fa-search"></i> Buscar Suporte
+        </button>
+
+        <div class="modal fade" id="searchSuporteModal" tabindex="-1" aria-labelledby="searchSuporteModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="searchSuporteModalLabel">Buscar Suporte</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('suportes.search') }}" method="POST">
+                            @csrf
+                            <div class="mb-3">
+                                <label for="cpf" class="form-label">Digite o CPF:</label>
+                                <input type="text" class="form-control" id="cpf" name="cpf" required
+                                    placeholder="Digite o CPF">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary">Buscar</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     <script>
         var botmanWidget = {
