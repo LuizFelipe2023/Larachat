@@ -58,6 +58,9 @@ Route::prefix('suportes')->name('suportes.')->group(function(){
       route::get('/{id}/edit',[SuporteController::class,'editSuporte'])->name('edit');
       route::put('/{id}/update',[SuporteController::class,'updateSuporte'])->name('update');
       route::delete('/{id}/delete',[SuporteController::class,'deleteSuporte'])->name('delete');
+      Route::post('/search',[SuporteController::class,'searchSuporte'])->name('search');
+      Route::get('/resultado', [SuporteController::class, 'showSuporte'])->name('resultado');
+      Route::put('/{id}/avaliacao',[SuporteController::class,'inserirAvaliacao'])->name('inserirAvaliacao');
 }); 
 
 Route::prefix('graficos')->name('graficos.')->group(function(){

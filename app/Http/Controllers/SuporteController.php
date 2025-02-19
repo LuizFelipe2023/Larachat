@@ -104,15 +104,14 @@ class SuporteController extends Controller
 
             Log::info('Buscando suporte pelo CPF', ['cpf' => $validatedData['cpf']]);
 
-            $tiposAvaliacoes = Avaliacao::all();
             $suportes = $this->suporteService->getSuporteByCpf($validatedData['cpf']);
 
-            if (!$suportes) {
+            if ($suportes->isEmpty()) {
                 Log::warning('Nenhum suporte encontrado para o CPF informado', ['cpf' => $validatedData['cpf']]);
                 return redirect()->back()->withErrors(['cpf' => 'Nenhum suporte encontrado para este CPF.']);
             }
 
-            return view('suportes.showSuporte', compact('suportes','tiposAvaliacoes'));
+            return redirect()->route('suportes.resultado', ['cpf' => $validatedData['cpf']]);
 
         } catch (Exception $e) {
             Log::error('Erro ao buscar suporte pelo CPF', [
@@ -124,24 +123,35 @@ class SuporteController extends Controller
         }
     }
 
-    public function inserirAvaliacao(SuporteRequest $request, $id)
+    public function showSuporte(SearchSuporteRequest $request)
+    {
+        $validatedData = $request->validated();
+        $suportes = $this->suporteService->getSuporteByCpf($validatedData['cpf']);
+        $tiposAvaliacoes = Avaliacao::all();
+        return view('suportes.showSuporte', compact('suportes', 'tiposAvaliacoes'));
+    }
+
+    public function inserirAvaliacao(Request $request, $id)
     {
         try {
             Log::info("Tentativa de inserção de avaliação para o suporte ID: {$id}");
 
-            $validatedData = $request->validated();
-            $avaliacaoId = $validatedData['avaliacao_id'];
+            $validatedData = $request->validate([
+                'avaliacao_id' => 'required|exists:avaliacoes,id'
+            ]);
 
-            $this->suporteService->update($id, $avaliacaoId);
+            $this->suporteService->inserirAvaliacao($id, $validatedData['avaliacao_id']);  // Corrected here
 
-            Log::info("Avaliação inserida com sucesso para o suporte ID: {$id}, Avaliação ID: {$avaliacaoId}");
+            Log::info("Avaliação inserida com sucesso para o suporte ID: {$id}, Avaliação ID: {$validatedData['avaliacao_id']}");  // Corrected here
 
-            return redirect()->to('home')->with('success', 'Avaliação Inserida com sucesso');
+            return redirect()->back()->with('success', 'Avaliação Inserida com sucesso');
         } catch (Exception $e) {
             Log::error("Erro ao inserir avaliação para o suporte ID: {$id}. Erro: " . $e->getMessage(), [
                 'stack' => $e->getTraceAsString()
             ]);
+
             return redirect()->back()->withErrors(['error' => 'Ocorreu um erro ao inserir a avaliação. Tente novamente mais tarde.']);
         }
     }
+
 }
