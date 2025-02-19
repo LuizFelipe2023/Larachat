@@ -27,10 +27,14 @@
                                 <input type="text" id="telefone_cliente" name="telefone_cliente" required value="{{ old('telefone_cliente') }}" class="form-control">
                             </div>
                             <div class="col-md-6 mb-3">
+                                 <label for="cpf" class="fw-bold">CPF:</label>
+                                 <input type="text" name="cpf" id="cpf" class="form-control" required value="{{ old('cpf') }}">
+                            </div>
+                            <div class="col-md-6 mb-3">
                                 <label for="email_cliente" class="fw-bold">Email:</label>
                                 <input type="email" id="email_cliente" name="email_cliente" required value="{{ old('email_cliente') }}" class="form-control">
                             </div>
-                            <div class="col-md-6 mb-3">
+                            <div class="col-md-12 mb-3">
                                 <label for="tipo_duvida" class="fw-bold">Tipo de Dúvida:</label>
                                 <select id="tipo_duvida" name="tipo_duvida" class="form-select" required>
                                     <option value="">Selecione um Tipo</option>

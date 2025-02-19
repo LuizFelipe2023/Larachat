@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
     {
            $this->call(SituacaoFeedbackSeeder::class);
            $this->call(SituacaoSuporteSeeder::class);
+           $this->call(AvaliacaoSeeder::class);
     }
 }

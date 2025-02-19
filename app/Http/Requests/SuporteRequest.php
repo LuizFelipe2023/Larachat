@@ -29,7 +29,8 @@ class SuporteRequest extends FormRequest
             'email_cliente' => 'required|email',
             'tipo_duvida' => 'required|string|max:255',
             'descricao' => 'required|string',
-            'status_id' => 'nullable|exists:situacoes_suporte,id' 
+            'status_id' => 'nullable|exists:situacoes_suporte,id',
+            'cpf' => 'required|min:11|max:14|string'
         ];
     }
 
@@ -61,7 +62,12 @@ class SuporteRequest extends FormRequest
             'descricao.required' => 'A descrição é obrigatória.',
             'descricao.string' => 'A descrição deve ser uma string válida.',
 
-            'status_id.exists' => "Selecione um status que exista"
+            'status_id.exists' => "Selecione um status que exista",
+
+            'cpf.required' => 'O CPF é obrigatório.',
+            'cpf.string' => 'O CPF deve ser um texto valido.',
+            'cpf.min' => 'O CPF deve ter pelo menos 11 caracteres.',
+            'cpf.max' => 'O CPF pode ter no máximo 14 caracteres.'
         ];
     }
 }
