@@ -43,6 +43,7 @@
                                 <label for="descricao" class="fw-bold">Descrição:</label>
                                 <textarea id="descricao" name="descricao" required class="form-control" rows="5">{{ old('descricao') }}</textarea>
                             </div>
+                            <input type="hidden" name="status_id" id="status_id" value="1">
                             <div class="d-flex justify-content-end">
                                 <button type="submit" class="btn btn-md btn-primary ">Enviar
                                     Mensagem</button>

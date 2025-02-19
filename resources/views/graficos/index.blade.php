@@ -27,12 +27,27 @@
                                     </div>
                                 </div>
                             </div>
-
+                            <div class="col-md-6 col-lg-6 mb-4">
+                                <div class="card shadow-sm rounded-3 border-0">
+                                    <div class="card-body text-center p-4">
+                                        <h5 class="text-danger mb-4" style="font-size: 1.2rem; font-weight: 600;">Suportes por Status</h5>
+                                        <div id="suportesStatusChart" class="chart-container" style="height: 300px; width: 100%;"></div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="col-md-6 col-lg-6 mb-4">
                                 <div class="card shadow-sm rounded-3 border-0">
                                     <div class="card-body text-center p-4">
                                         <h5 class="text-success mb-4" style="font-size: 1.2rem; font-weight: 600;">Feedbacks por Nível de Satisfação</h5>
                                         <div id="feedbacksChart" class="chart-container" style="height: 300px; width: 100%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-lg-6 mb-4">
+                                <div class="card shadow-sm rounded-3 border-0">
+                                    <div class="card-body text-center p-4">
+                                        <h5 class="text-success mb-4" style="font-size: 1.2rem; font-weight: 600;">Feedbacks por Nível de Satisfação</h5>
+                                        <div id="situacoesChart" class="chart-container" style="height: 300px; width: 100%;"></div>
                                     </div>
                                 </div>
                             </div>
@@ -46,6 +61,8 @@
         document.addEventListener('DOMContentLoaded', function () {
             const feedbacksData = @json($feedbacksData);
             const suportesData = @json($suportesData);
+            const situacoesData = @json($situacoesData);
+            const statusSuportesData = @json($statusSuportesData);
 
             Highcharts.chart('feedbacksChart', {
                 chart: {
@@ -82,6 +99,35 @@
                     data: suportesData,
                 }]
             });
+
+            Highcharts.chart('situacoesChart', {
+                chart: {
+                    type: 'bar'
+                },
+                title: {
+                    text: 'Feedbacks por Situação'
+                },
+                series: [{
+                    name: 'Tipo de Dúvida',
+                    colorByPoint: true,
+                    data: situacoesData,
+                }]
+            });
+
+            Highcharts.chart('suportesStatusChart', {
+                chart: {
+                    type: 'line'
+                },
+                title: {
+                    text: 'Feedbacks por Situação'
+                },
+                series: [{
+                    name: 'Tipo de Dúvida',
+                    colorByPoint: true,
+                    data: statusSuportesData,
+                }]
+            });
+
         });
         </script>
     </div>

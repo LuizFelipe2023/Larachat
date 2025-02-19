@@ -28,7 +28,8 @@ class SuporteRequest extends FormRequest
             'telefone_cliente' => 'required|string|min:8|max:50',
             'email_cliente' => 'required|email',
             'tipo_duvida' => 'required|string|max:255',
-            'descricao' => 'required|string'
+            'descricao' => 'required|string',
+            'status_id' => 'nullable|exists:situacoes_suporte,id' 
         ];
     }
 
@@ -58,7 +59,9 @@ class SuporteRequest extends FormRequest
             'tipo_duvida.max' => 'O tipo de dúvida pode ter no máximo 255 caracteres.',
             
             'descricao.required' => 'A descrição é obrigatória.',
-            'descricao.string' => 'A descrição deve ser uma string válida.'
+            'descricao.string' => 'A descrição deve ser uma string válida.',
+
+            'status_id.exists' => "Selecione um status que exista"
         ];
     }
 }
