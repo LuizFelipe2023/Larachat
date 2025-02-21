@@ -144,7 +144,7 @@ class SuporteController extends Controller
 
             Log::info("Avaliação inserida com sucesso para o suporte ID: {$id}, Avaliação ID: {$validatedData['avaliacao_id']}");  // Corrected here
 
-            return redirect()->back()->with('success', 'Avaliação Inserida com sucesso');
+            return redirect()->route('home')->with('success', 'Avaliação enviada com sucesso para o suporte');
         } catch (Exception $e) {
             Log::error("Erro ao inserir avaliação para o suporte ID: {$id}. Erro: " . $e->getMessage(), [
                 'stack' => $e->getTraceAsString()
