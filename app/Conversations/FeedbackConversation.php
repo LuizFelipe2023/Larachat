@@ -4,6 +4,7 @@ namespace App\Conversations;
 
 use App\Models\Feedback;
 use BotMan\BotMan\Messages\Conversations\Conversation;
+use App\Services\NotificationService;
 
 class FeedbackConversation extends Conversation
 {
@@ -11,6 +12,13 @@ class FeedbackConversation extends Conversation
     protected $descricao;
     protected $nomeCliente = null;
     protected $cpfCliente = null;
+
+    protected $notificationService;
+
+    public function __construct(NotificationService $notificationService)
+    {
+           $this->notificationService = $notificationService;
+    }
 
     public function askSatisfacao()
     {
@@ -89,13 +97,15 @@ class FeedbackConversation extends Conversation
 
     public function saveFeedback()
     {
-        Feedback::create([
+        $feedback = Feedback::create([
             'nivel_satisfacao' => $this->nivelSatisfacao,
             'descricao' => $this->descricao,
             'nome_cliente' => $this->nomeCliente,
             'cpf_cliente' => $this->cpfCliente,
             'situacao_fk' => 1
         ]);
+
+        $this->notificationService->sendNotificationFeedback($feedback->id);
 
         $this->say('Obrigado pelo seu feedback!');
     }
